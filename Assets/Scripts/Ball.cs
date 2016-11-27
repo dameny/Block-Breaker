@@ -21,8 +21,14 @@ public class Ball : MonoBehaviour {
 			if (Input.GetMouseButtonDown (0)) {
 				Debug.Log ("Mouse Button clicked");
 				started = true;
-				this.rigidbody2D.velocity = new Vector2(0f, 10f);
+				this.rigidbody2D.velocity = new Vector2(3f, 10f);
 			}
+		}
+	}
+
+	void OnCollisionEnter2D(Collision2D collision){
+		if (started) {
+			audio.Play ();
 		}
 	}
 }
