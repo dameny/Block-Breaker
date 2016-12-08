@@ -2,8 +2,9 @@
 using System.Collections;
 
 public class Ball : MonoBehaviour {
-	private Paddle paddle;
+	public float initialSpeed;
 
+	private Paddle paddle;
 	private Vector3 paddleToBallVector;
 	private bool started;
 
@@ -21,13 +22,22 @@ public class Ball : MonoBehaviour {
 			if (Input.GetMouseButtonDown (0)) {
 				Debug.Log ("Mouse Button clicked");
 				started = true;
-				this.rigidbody2D.velocity = new Vector2(3f, 10f);
+				paddle.GameStarted();
+				float angle = Random.Range(Mathf.PI/4, Mathf.PI * 3/4);
+				this.rigidbody2D.velocity = new Vector2(initialSpeed * Mathf.Cos(angle), initialSpeed * Mathf.Sin(angle));
 			}
 		}
 	}
 
 	void OnCollisionEnter2D(Collision2D collision){
+		float xVelocitySign = rigidbody2D.velocity.x/Mathf.Abs(rigidbody2D.velocity.x);
+		float yVelocitySign = rigidbody2D.velocity.y/Mathf.Abs(rigidbody2D.velocity.y);
+		Vector2 velocityNudge = new Vector2(xVelocitySign * Random.Range(0.0f, 0.02f), yVelocitySign * Random.Range(0.0f, 0.02f));
+
 		if (started) {
+			rigidbody2D.velocity += velocityNudge;
+
+			Debug.Log (rigidbody2D.velocity + " " + rigidbody2D.velocity.magnitude);
 			audio.Play ();
 		}
 	}
