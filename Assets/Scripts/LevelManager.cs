@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿// Manages the level switching. Since the level has to switch when all the blocks are destroyed
+// The brick class sends a message to the level manager and the level manager checks the number
+// of bricks left.
+
+using UnityEngine;
 using System.Collections;
 
 public class LevelManager : MonoBehaviour {

@@ -3,12 +3,10 @@ using System.Collections;
 
 public class Brick : MonoBehaviour {
 
-	//public int maxHits;
 	public AudioClip crack;
 	public Sprite[] hitSprites;
 	public static int breakableCount = 0;
 	public GameObject smoke;
-
 
 	private LevelManager levelManager;
 	private int timesHit;

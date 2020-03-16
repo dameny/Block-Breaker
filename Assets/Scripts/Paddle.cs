@@ -9,7 +9,7 @@ public class Paddle : MonoBehaviour {
 	private bool started = false;
 	private Ball ball;
 
-		// Use this for initialization
+	// Use this for initialization
 	void Start () {
 		ball = GameObject.FindObjectOfType<Ball> ();
 	}
@@ -25,6 +25,7 @@ public class Paddle : MonoBehaviour {
 		}
 	}
 
+	// A test mode where the paddle matches the ball's x transform so it can't lose
 	void MoveAuto(){
 		Vector3 paddlePos = new Vector3 (0.5f, this.transform.position.y , 0f);
 
@@ -32,6 +33,7 @@ public class Paddle : MonoBehaviour {
 		this.transform.position = paddlePos;
 	}
 
+	// Mouse based controls
 	void MoveWithMouse(){
 		Vector3 paddlePos = new Vector3 (0.5f, this.transform.position.y , 0f);
 		
